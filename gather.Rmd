@@ -1,0 +1,33 @@
+---
+title: "gather"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(readxl)
+library(tidyverse)
+library(janitor)  
+library(gt)
+library(dplyr)
+library(rvest)
+```
+
+```{r}
+funds <- read_html("https://www.chicagotribune.com/news/ct-2016-cps-school-budget-cuts-table-htmlstory.html")
+tab <- funds %>% 
+  html_nodes("table")
+tab <- tab[1] %>% 
+  html_table
+
+shakeups <- read_html("https://docs.google.com/spreadsheets/u/1/d/e/2PACX-1vRmKox-lDNqhtUNL4WLl8x6DljIi3b0k1pYEmD7adfCwX-rGYyFw0XIjxNWkOfL6og3CHfUEHPMwv6k/pubhtml?urp=gmail_link#")
+close <- shakeups %>% 
+  html_nodes("table")
+close <- close[1] %>% 
+  html_table
+
+u <- shakeups %>% 
+  html_nodes("table")
+u <- u[3] %>% 
+  html_table
+```
