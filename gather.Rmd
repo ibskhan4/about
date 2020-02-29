@@ -26,8 +26,8 @@ close <- shakeups %>%
 close <- close[1] %>% 
   html_table
 
-u <- shakeups %>% 
+students <- shakeups %>% 
   html_nodes("table")
-u <- u[3] %>% 
+students <- students[3] %>% 
   html_table
 ```
